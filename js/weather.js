@@ -25,8 +25,25 @@ searchInp.addEventListener('keydown', async (e) => {
 })
 
 let updateCurrentWeather = (data) => {
+    console.log(data);
     city.textContent = data.name + ', ' + data.sys.country;
     day.textContent = dayOfWeek();
+    humidity.textContent = data.main.humidity;
+    pressure.textContent = data.main.pressure;
+    let windDirection;
+    let deg = data.wind.deg;
+    if (deg > 45 && deg <= 135) {
+        windDirection = 'East';
+    } else if (deg > 135 && deg <= 225) {
+        windDirection = 'South';
+    } else if (deg > 225 && deg <= 315) {
+        windDirection = 'West';
+    } else {
+        windDirection = 'North';
+    }
+    wind.textContent = windDirection + ', ' + data.wind.speed;
+    temperature.textContent = data.main.temp > 0 ?
+        '+' + Math.round(data.main.temp) : Math.round(data.main.temp);
 }
 
 let dayOfWeek = () => {
