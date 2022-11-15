@@ -11,7 +11,9 @@
 
 <body>
     <div class="weather">
-        <input type="search" class="weather_search" placeholder="Your City">
+        <input type="search" list="suggestions" class="weather_search" placeholder="Your City">
+        <dataList id="suggestions">
+        </dataList>
         <div class="weather_today">
             <div class="weather_details">
                 <h2 class="weather_city">City</h2>
