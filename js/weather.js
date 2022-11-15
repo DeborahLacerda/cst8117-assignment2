@@ -6,9 +6,11 @@ let wind = document.querySelector('.weather_indicator-wind>.value');
 let pressure = document.querySelector('.weather_indicator-pressure>.value');
 let image = document.querySelector('.weather_image');
 let temperature = document.querySelector('.weather_temperature>.value');
+let forecastBlock = document.querySelector('.weather_forecast');
 
 let weatherAPIKey = 'd228430a7837ca7c487f6914f626939d';
 let weatherBaseEndpoint = 'https://api.openweathermap.org/data/2.5/weather?units=metric&appid=' + weatherAPIKey;
+let forecaseBaseEndpoint = 'https://api.openweathermap.org/data/2.5/forecast?units=metric&appid=' + weatherAPIKey;
 
 let getWeatherByCityName = async (city) => {
     let endpoint = weatherBaseEndpoint + '&q=' + city;
@@ -17,10 +19,29 @@ let getWeatherByCityName = async (city) => {
     return weather;
 }
 
+let getForecastByCityID = async (id) => {
+    let endpoint = forecaseBaseEndpoint + '&id=' + id;
+    let result = await fetch(endpoint);
+    let forecast = await result.json();
+    let forecastList = forecast.list;
+    let daily = [];
+
+    forecastList.forEach(day => {
+        let date = new Date(day.dt_txt.replace(' ', 'T'));
+        let hours = date.getHours();
+        if (hours === 12) {
+            daily.push(day);
+        }
+    });
+    console.log(daily);
+}
+
 searchInp.addEventListener('keydown', async (e) => {
     if (e.keyCode === 13) {
         let weather = await getWeatherByCityName(searchInp.value);
+        let cityID = weather.id;
         updateCurrentWeather(weather);
+        getForecastByCityID(cityID);
     }
 })
 
@@ -44,6 +65,13 @@ let updateCurrentWeather = (data) => {
     wind.textContent = windDirection + ', ' + data.wind.speed;
     temperature.textContent = data.main.temp > 0 ?
         '+' + Math.round(data.main.temp) : Math.round(data.main.temp);
+}
+
+let updateForecast = (forecast) => {
+    forecastBlock.innerHTML = '';
+    forecast.forEach(day => {
+        let iconUrl = 'http://openweathermap.org/img/wn/' + day.weather[0].icon + '@2x.png';
+    })
 }
 
 let dayOfWeek = () => {
