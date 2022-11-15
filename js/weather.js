@@ -53,11 +53,20 @@ let weatherImages = [
     }
 ]
 
-let getWeatherByCityName = async (city) => {
+let getWeatherByCityName = async (cityString) => {
+    let city;
+    if (cityString.includes(',')) {
+        city = cityString.substring(0, cityString.indexOf(',')) + cityString.substring(cityString.lastIndexOf(','));
+    } else {
+        city = cityString;
+    }
     let endpoint = weatherBaseEndpoint + '&q=' + city;
     let response = await fetch(endpoint);
+    if (response.status !== 200) {
+        alert('City not found!');
+        return;
+    }
     let weather = await response.json();
-    console.log(weather);
     return weather;
 }
 
@@ -75,17 +84,29 @@ let getForecastByCityID = async (id) => {
             daily.push(day);
         }
     });
-
     return daily;
 }
 
+let weatherForCity = async (city) => {
+    let weather = await getWeatherByCityName(city);
+    if (!weather) {
+        return;
+    }
+    let cityID = weather.id;
+    updateCurrentWeather(weather);
+    let forecast = await getForecastByCityID(cityID);
+    updateForecast(forecast);
+}
+
+let init = () => {
+    weatherForCity('Ottawa').then(() => document.body.style.filter = 'blur(0)');
+}
+
+init();
+
 searchInp.addEventListener('keydown', async (e) => {
     if (e.keyCode === 13) {
-        let weather = await getWeatherByCityName(searchInp.value);
-        let cityID = weather.id;
-        updateCurrentWeather(weather);
-        let forecast = await getForecastByCityID(cityID);
-        updateForecast(forecast);
+        weatherForCity(searchInp.value);
     }
 })
 
@@ -100,7 +121,6 @@ searchInp.addEventListener('input', async () => {
         option.value = cities[i].matching_full_name;
         suggestions.appendChild(option);
     }
-    console.log(result);
 })
 
 let updateCurrentWeather = (data) => {
