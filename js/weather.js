@@ -126,8 +126,8 @@ searchInp.addEventListener('input', async () => {
 let updateCurrentWeather = (data) => {
     city.textContent = data.name + ', ' + data.sys.country;
     day.textContent = dayOfWeek();
-    humidity.textContent = data.main.humidity;
-    pressure.textContent = data.main.pressure;
+    humidity.textContent = data.main.humidity + '%';
+    pressure.textContent = data.main.pressure + 'hPa';
     let windDirection;
     let deg = data.wind.deg;
     if (deg > 45 && deg <= 135) {
@@ -139,7 +139,7 @@ let updateCurrentWeather = (data) => {
     } else {
         windDirection = 'North';
     }
-    wind.textContent = windDirection + ', ' + data.wind.speed;
+    wind.textContent = windDirection + ', ' + data.wind.speed + 'm/s';
     temperature.textContent = data.main.temp > 0 ?
         '+' + parseFloat(data.main.temp).toFixed(1) : parseFloat(data.main.temp).toFixed(1);
     let imgID = data.weather[0].id;

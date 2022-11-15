@@ -29,8 +29,8 @@ body {
     width: 100%;
     height: 100vh;
     margin: 0;
-    background-image: radial-gradient(circle, #1c7fc2 0%, #009cdc 28%, #0d9ade 32%, #011844 100%);
-    color: #fff;
+    background-color: #F9F8F8;
+    color: #654f6f;
     font-family: 'Open Sans', Arial, sans-serif;
     font-weight: 300;
     font-size: 22px;
@@ -51,14 +51,14 @@ body {
     width: 100%;
     padding: 15px 10px;
     border: none;
-    background-color: rgb(255, 255, 255, 0.15);
+    background-color: rgba(128, 20, 20, 0.2);
     font-size: 20px;
     color: inherit;
     margin-bottom: 20px;
 }
 
 .weather_search::placeholder {
-    color: #fff;
+    color: #F9F8F8;
 }
 
 .weather_today {
@@ -123,7 +123,7 @@ body {
 }
 
 .weather_forecast_item {
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(128, 20, 20, 0.2);
     border-radius: 10px;
     margin: 0 10px 10px;
     padding: 30px 5px 20px;
