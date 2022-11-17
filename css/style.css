@@ -1,0 +1,133 @@
+body {
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+    background-color: #F9F8F8;
+    color: #3f4739;
+    font-family: "Helvetica Neue", HelveticaNeue, "TeX Gyre Heros", TeXGyreHeros, FreeSans, "Nimbus Sans L", "Liberation Sans", Arimo, Helvetica, Arial, sans-serif;
+    font-weight: 300;
+    font-size: 22px;
+    transition: filter 0.5s;
+    filter: blur(15px);
+}
+
+footer {
+    background-color: #3f4739;
+    color: white;
+    font-size: 10pt;
+    margin-top: 10px;
+    align-items: center;
+    padding: 10px;
+    display: flex;
+}
+
+.navbar-nav {
+    align-items: center;
+}
+
+#logo {
+    width: 100px;
+}
+
+.citysearch label {
+    display: block;
+}
+
+
+.weather {
+    width: 90%;
+    margin: 0 auto;
+    padding: 20px 0;
+    box-sizing: border-box;
+    white-space: nowrap;
+}
+
+.citysearch {
+    margin-top: 50px;
+}
+
+.weather_search {
+    width: 100%;
+    padding: 15px 10px;
+    border: none;
+    font-size: 20px;
+    color: inherit;
+    margin-bottom: 20px;
+}
+
+.weather_search::placeholder {
+    color: #bbb5bd;
+}
+
+.weather_today {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.weather_image {
+    width: 30vmin;
+    align-self: center;
+}
+
+.weather_city {
+    font-size: 36px;
+    font-weight: 600;
+    margin: 20px 0;
+}
+
+.weather_day {
+    font-size: 30px;
+    margin: 10px 0;
+    font-weight: 400;
+}
+
+.weather_indicator::before {
+    content: '';
+    display: inline-block;
+    vertical-align: middle;
+    width: 30px;
+    height: 30px;
+    background-size: cover;
+    margin-right: 10px;
+}
+
+.weather_indicator-humidity::before {
+    background-image: url(../images/humidity.png);
+}
+
+.weather_indicator-wind::before {
+    background-image: url(../images/wind.png);
+}
+
+.weather_indicator-pressure::before {
+    background-image: url(../images/pressure.png)
+}
+
+.weather_temperature {
+    font-size: 60px;
+}
+
+.weather_forecast {
+    width: 100%;
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.weather_forecast_icon {
+    max-width: 50%;
+}
+
+.weather_forecast_item {
+    color: #3f4739;
+    background-color: #bbb5bd;
+    border-radius: 10px;
+    margin: 0 10px 10px;
+    padding: 30px 5px 20px;
+    box-sizing: border-box;
+    min-width: 150px;
+    width: calc(20% - 20px);
+    flex-grow: 1;
+}
