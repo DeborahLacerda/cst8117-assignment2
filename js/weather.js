@@ -140,8 +140,7 @@ let updateCurrentWeather = (data) => {
         windDirection = 'North';
     }
     wind.textContent = windDirection + ', ' + data.wind.speed + 'm/s';
-    temperature.textContent = data.main.temp > 0 ?
-        '+' + parseFloat(data.main.temp).toFixed(1) : parseFloat(data.main.temp).toFixed(1);
+    temperature.textContent = parseFloat(data.main.temp).toFixed(1);
     let imgID = data.weather[0].id;
     weatherImages.forEach(obj => {
         if (obj.ids.includes(imgID)) {
@@ -155,14 +154,13 @@ let updateForecast = (forecast) => {
     forecast.forEach(day => {
         let iconUrl = 'http://openweathermap.org/img/wn/' + day.weather[0].icon + '@2x.png';
         let dayName = dayOfWeek(day.dt * 1000);
-        let temperature = day.main.temp > 0 ?
-            '+' + parseFloat(day.main.temp).toFixed(1) : parseFloat(day.main.temp).toFixed(1);
+        let temperature = parseFloat(day.main.temp).toFixed(1);
         let forecastItem = `
-            <article class="weather_forecast_item">
+            <dic class="weather_forecast_item">
                 <img src="${iconUrl}" alt="${day.weather[0].description}" class="weather_forecast_icon">
                 <h3 class="weather_forecast_day">${dayName}</h3>
                 <p class="weather_forecast_temperature"><span class="value">${temperature}</span>&deg;C</p>
-            </article>
+            </div>
         `;
         forecastBlock.insertAdjacentHTML('beforeend', forecastItem);
     })

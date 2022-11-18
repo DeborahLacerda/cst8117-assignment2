@@ -1,64 +1,62 @@
-@font-face {
-    font-family: 'Open Sans';
-    src: url(../fonts/OpenSans.woff2) format('woff2'),
-        url(../fonts/OpenSans.woff) format('woff');
-}
-
-@font-face {
-    font-family: 'Open Sans';
-    src: url(../fonts/OpenSans-Light.woff2) format('woff2'),
-        url(../fonts/OpenSans-Light.woff) format('woff');
-    font-weight: 300;
-}
-
-@font-face {
-    font-family: 'Open Sans';
-    src: url(../fonts/OpenSans-Semibold.woff2) format('woff2'),
-        url(../fonts/OpenSans-Semibold.woff) format('woff');
-    font-weight: 600;
-}
-
-@font-face {
-    font-family: 'Open Sans';
-    src: url(../fonts/OpenSans-Bold.woff2) format('woff2'),
-        url(../fonts/OpenSans-Vold.woff) format('woff');
-    font-weight: 700;
-}
-
 body {
     width: 100%;
     height: 100vh;
     margin: 0;
     background-color: #F9F8F8;
-    color: #654f6f;
-    font-family: 'Open Sans', Arial, sans-serif;
+    color: #3f4739;
+    font-family: "Helvetica Neue", HelveticaNeue, "TeX Gyre Heros", TeXGyreHeros, FreeSans, "Nimbus Sans L", "Liberation Sans", Arimo, Helvetica, Arial, sans-serif;
     font-weight: 300;
     font-size: 22px;
     transition: filter 0.5s;
     filter: blur(15px);
 }
 
+footer {
+    background-color: #3f4739;
+    color: white;
+    font-size: 10pt;
+    margin-top: 10px;
+    align-items: center;
+    padding: 10px;
+    display: flex;
+}
+
+.navbar-nav {
+    align-items: center;
+}
+
+#logo {
+    width: 100px;
+}
+
+.citysearch label {
+    display: block;
+}
+
+
 .weather {
-    width: 80%;
-    height: 100%;
+    width: 90%;
     margin: 0 auto;
     padding: 20px 0;
     box-sizing: border-box;
     white-space: nowrap;
 }
 
+.citysearch {
+    margin-top: 50px;
+}
+
 .weather_search {
     width: 100%;
     padding: 15px 10px;
     border: none;
-    background-color: rgba(128, 20, 20, 0.2);
     font-size: 20px;
     color: inherit;
     margin-bottom: 20px;
 }
 
 .weather_search::placeholder {
-    color: #F9F8F8;
+    color: #bbb5bd;
 }
 
 .weather_today {
@@ -123,7 +121,8 @@ body {
 }
 
 .weather_forecast_item {
-    background-color: rgba(128, 20, 20, 0.2);
+    color: #3f4739;
+    background-color: #bbb5bd;
     border-radius: 10px;
     margin: 0 10px 10px;
     padding: 30px 5px 20px;
