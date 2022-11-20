@@ -10,9 +10,8 @@ let forecastBlock = document.querySelector('.weather_forecast');
 let suggestions = document.querySelector('#suggestions');
 
 let weatherAPIKey = 'd228430a7837ca7c487f6914f626939d';
-let weatherBaseEndpoint = 'https://api.openweathermap.org/data/2.5/weather?units=metric&appid=' + weatherAPIKey;
-let forecaseBaseEndpoint = 'https://api.openweathermap.org/data/2.5/forecast?units=metric&appid=' + weatherAPIKey;
-let cityBaseEndpoint = 'https://api.teleport.org/api/cities/?search=';
+let weatherBaseUrl = 'https://api.openweathermap.org/data/2.5';
+let cityBaseUrl = 'https://api.teleport.org/api';
 
 let weatherImages = [
     {
@@ -60,20 +59,35 @@ let getWeatherByCityName = async (cityString) => {
     } else {
         city = cityString;
     }
-    let endpoint = weatherBaseEndpoint + '&q=' + city;
-    let response = await fetch(endpoint);
-    if (response.status !== 200) {
-        alert('City not found!');
-        return;
-    }
-    let weather = await response.json();
-    return weather;
+    let weather = await $.ajax({
+        url: `${weatherBaseUrl}/weather`,
+        type: "GET",
+        data: {
+            units: "metric",
+            appid: weatherAPIKey,
+            q: city,
+        },
+        error: function (error) {
+            alert(error.statusText);
+        },
+    });
+    return weather
 }
 
 let getForecastByCityID = async (id) => {
-    let endpoint = forecaseBaseEndpoint + '&id=' + id;
-    let result = await fetch(endpoint);
-    let forecast = await result.json();
+    let forecast = await $.ajax({
+        url: `${weatherBaseUrl}/forecast`,
+        type: "GET",
+        data: {
+            units: "metric",
+            appid: weatherAPIKey,
+            id: id,
+        },
+        error: function (error) {
+            alert(error.statusText);
+        },
+    });
+
     let forecastList = forecast.list;
     let daily = [];
 
@@ -111,8 +125,17 @@ searchInp.addEventListener('keydown', async (e) => {
 })
 
 searchInp.addEventListener('input', async () => {
-    let endpoint = cityBaseEndpoint + searchInp.value;
-    let result = await (await fetch(endpoint)).json();
+    let result = await $.ajax({
+        url: `${cityBaseUrl}/cities`,
+        type: "GET",
+        data: {
+            search: searchInp.value,
+        },
+        error: function (error) {
+            alert(error.statusText);
+        },
+    });
+
     suggestions.innerHTML = '';
     let cities = result._embedded['city:search-results'];
     let length = cities.length > 5 ? 5 : cities.length;
