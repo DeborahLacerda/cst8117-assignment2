@@ -40,3 +40,12 @@ main > .container {
 .container .sports .card {
   border: none;
 }
+
+.weather {
+  text-align: right;
+}
+
+.day-information {
+  text-align: left;
+  display: flex;
+}
