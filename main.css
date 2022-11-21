@@ -34,3 +34,9 @@ main > .container {
   padding-right: 15px;
   padding-left: 15px;
 }
+
+.container .trending .card,
+.container .city .card,
+.container .sports .card {
+  border: none;
+}
