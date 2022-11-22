@@ -35,17 +35,6 @@ main > .container {
   padding-left: 15px;
 }
 
-.container .trending .card,
-.container .city .card,
-.container .sports .card {
+.card {
   border: none;
-}
-
-.weather {
-  text-align: right;
-}
-
-.day-information {
-  text-align: left;
-  display: flex;
 }
