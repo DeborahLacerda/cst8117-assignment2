@@ -8,6 +8,7 @@ let image = document.querySelector(".weather_image");
 let temperature = document.querySelector(".weather_temperature>.value");
 let forecastBlock = document.querySelector(".weather_forecast");
 let suggestions = document.querySelector("#suggestions");
+let searchBtn = document.querySelector('.search');
 
 let weatherAPIKey = "d228430a7837ca7c487f6914f626939d";
 let weatherBaseUrl = "https://api.openweathermap.org/data/2.5";
@@ -125,6 +126,10 @@ searchInp.addEventListener("keydown", async (e) => {
     weatherForCity(searchInp.value);
   }
 });
+
+searchBtn.addEventListener("click", function () {
+  weatherForCity(searchInp.value);
+})
 
 searchInp.addEventListener("input", async () => {
   let result = await $.ajax({
