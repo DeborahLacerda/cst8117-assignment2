@@ -36,7 +36,6 @@ $(document).ready(() => {
 
   showInformation = (listOfNews, divId) => {
     let totalItems = listOfNews.length >= 5 ? 5 : listOfNews.length;
-    console.log(listOfNews.length);
     for (i = 1; i < totalItems; i++) {
       let currentNews = listOfNews[i];
       $(`#${divId}`).append(
