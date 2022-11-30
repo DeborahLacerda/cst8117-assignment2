@@ -7,6 +7,7 @@ let pressure = document.querySelector(".weather_indicator-pressure>.value");
 let image = document.querySelector(".weather_image");
 let temperature = document.querySelector(".weather_temperature>.value");
 let forecastBlock = document.querySelector(".weather_forecast");
+let citysearch = document.querySelector('.citysearch');
 let suggestions = document.querySelector("#suggestions");
 let searchBtn = document.querySelector('.search');
 
@@ -121,15 +122,19 @@ let init = () => {
 
 init();
 
-searchInp.addEventListener("keydown", async (e) => {
-  if (e.keyCode === 13) {
-    weatherForCity(searchInp.value);
-  }
-});
+citysearch.addEventListener('submit', (e) => {
+  e.preventDefault();
 
-searchBtn.addEventListener("click", function () {
-  weatherForCity(searchInp.value);
+  searchInp.addEventListener("keydown", async (e) => {
+    if (e.keyCode === 13) {
+      weatherForCity(searchInp.value);
+    }
+  });
+  searchBtn.addEventListener("click", function () {
+    weatherForCity(searchInp.value);
+  })
 })
+
 
 searchInp.addEventListener("input", async () => {
   let result = await $.ajax({
