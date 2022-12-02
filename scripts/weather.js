@@ -205,3 +205,16 @@ let updateForecast = (forecast) => {
 let dayOfWeek = (dt = new Date().getTime()) => {
   return new Date(dt).toLocaleDateString("en-En", { weekday: "long" });
 };
+
+// toggle to dark mode
+function myFunction() {
+  var element = document.body;
+  element.classList.toggle("dark-mode");
+  mode = document.querySelector(".theme-mode");
+  mode.innerHTML = mode.innerHTML === "dark mode" ? "light mode" : "dark mode";
+  forcastCard = document.querySelectorAll('.weather_forecast_item');
+  forcastCard.forEach(card => {
+    card.style.background = mode.innerHTML === "light mode" ? "#3f473977" : "#3f473977";
+    card.style.color = mode.innerHTML === "light mode" ? "white" : "#654f6f";
+  })
+}

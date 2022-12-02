@@ -4,7 +4,9 @@
   --lavender-gray: #bbb5bd;
   --dark-blue-gray: #5c5d8d;
   --rifle-green: #3f4739;
+  --dark-back: #5c5e65;
 }
+
 body {
   width: 100%;
   height: 100vh;
@@ -29,10 +31,12 @@ footer {
   padding: 10px;
   display: flex;
 }
+
 .bgd-green {
   --bs-bg-opacity: 1;
   background-color: var(--rifle-green);
 }
+
 .navbar-nav {
   align-items: center;
 }
@@ -151,4 +155,14 @@ footer {
 
 .btns:hover {
   background-color: var(--lavender-gray);
+}
+
+/* theme toggle */
+.theme-mode {
+  margin: 0 1rem;
+}
+
+.dark-mode {
+  background-color: var(--dark-back);
+  color: white;
 }
