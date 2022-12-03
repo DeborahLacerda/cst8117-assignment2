@@ -71,9 +71,11 @@ let getWeatherByCityName = async (cityString) => {
       appid: weatherAPIKey,
       q: city,
     },
-    error: function (error) {
-      alert(error.statusText);
-    },
+    error: function (xhr) {
+      if (xhr.status == 404) {
+        showToastRequest('error', "City not found");
+      }
+    }
   });
   return weather;
 };
@@ -87,9 +89,11 @@ let getForecastByCityID = async (id) => {
       appid: weatherAPIKey,
       id: id,
     },
-    error: function (error) {
-      alert(error.statusText);
-    },
+    error: function (xhr) {
+      if (xhr.status == 404) {
+        showToastRequest('error', "City not found");
+      }
+    }
   });
 
   let forecastList = forecast.list;
@@ -143,9 +147,11 @@ searchInp.addEventListener("input", async () => {
     data: {
       search: searchInp.value,
     },
-    error: function (error) {
-      alert(error.statusText);
-    },
+    error: function (xhr) {
+      if (xhr.status == 404) {
+        showToastRequest('error', "City not found");
+      }
+    }
   });
 
   suggestions.innerHTML = "";
@@ -206,8 +212,22 @@ let dayOfWeek = (dt = new Date().getTime()) => {
   return new Date(dt).toLocaleDateString("en-En", { weekday: "long" });
 };
 
+showToastRequest = (type, content) => {
+  Toastify({
+    text: `${content}`,
+    duration: 2000,
+    close: false,
+    gravity: "top",
+    position: "right",
+    stopOnFocus: true,
+    style: {
+      background: `${type == 'error' ? 'red' : 'green'}`
+    },
+  }).showToast();
+};
+
 // toggle to dark mode
-function myFunction() {
+function themeToggle() {
   var element = document.body;
   element.classList.toggle("dark-mode");
   mode = document.querySelector(".theme-mode");
