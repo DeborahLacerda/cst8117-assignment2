@@ -38,3 +38,14 @@ main > .container {
 .card {
   border: none;
 }
+
+.modal-body {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.checkbox {
+  width: 33%;
+  text-transform: capitalize;
+}
