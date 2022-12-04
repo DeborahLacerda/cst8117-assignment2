@@ -47,6 +47,9 @@ a {
 #profileLink {
   width: 34px;
   height: 30px;
+  position: absolute;
+  top: 12px;
+  right: 0;
 }
 
 #groupImg {
@@ -54,6 +57,9 @@ a {
   margin-left: auto;
   margin-right: auto;
   padding: 30px;
+  border-radius: 34px;
 }
-
-
+.card-body {
+  height: 160pt;
+  position: relative;
+}
