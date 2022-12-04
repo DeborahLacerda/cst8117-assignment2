@@ -4,6 +4,9 @@
   --lavender-gray: #bbb5bd;
   --dark-blue-gray: #5c5d8d;
   --rifle-green: #3f4739;
+  font-family: "Helvetica Neue", HelveticaNeue, "TeX Gyre Heros", TeXGyreHeros,
+    FreeSans, "Nimbus Sans L", "Liberation Sans", Arimo, Helvetica, Arial,
+    sans-serif;
 }
 
 html {
@@ -12,14 +15,13 @@ html {
 }
 
 nav {
-  background-color:#3f4739;
+  background-color: var(--rifle-green);
 }
 
 #logo {
   width: 125px;
-  padding:5px;
+  padding: 5px;
 }
-
 
 body {
   margin-bottom: 60px;
@@ -31,18 +33,17 @@ body {
   width: 100%;
   height: 60px;
   line-height: 60px;
-  background-color: #3f4739;
+  background-color: var(--rifle-green);
 }
 
 .form {
   text-align: center;
-  color:#bbb5bd;
+  color: var(--lavender-gray);
 }
 
-#button{
-  background-color: #5c5d8d;
-  color:#bbb5bd;
-
+.button {
+  background-color: var(--dark-blue-gray);
+  color: var(--lavender-gray);
 }
 
 input {
@@ -68,4 +69,39 @@ main > .container {
 
 .card {
   border: none;
+}
+
+a {
+  float: right;
+}
+
+.profileLink {
+  width: 34px;
+  height: 30px;
+  position: absolute;
+  top: 12px;
+  right: 0;
+}
+
+#groupImg {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 30px;
+  border-radius: 34px;
+}
+.card-body {
+  height: 160pt;
+  position: relative;
+}
+
+.subscribe {
+  width: 100%;
+  border: none;
+  font-size: 20px;
+}
+
+.button {
+  background-color: var(--dark-blue-gray);
+  color: var(--lavender-gray);
 }
