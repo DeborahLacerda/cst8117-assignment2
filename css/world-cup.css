@@ -35,10 +35,6 @@ main > .container {
   padding-left: 15px;
 }
 
-#groupImg {
-  float: center;
-}
-
 .card {
   border: none;
 }
