@@ -59,7 +59,7 @@ $(document).ready(() => {
   showSection = (listOfNews, section) => {
     $("#main-news").append(`
     <section class="${section}">
-      <h2>${section}</h2>
+      <h2>${section.split("-").join(" ").toUpperCase()}</h2>
       <div id="${section}" class="row row-cols-1 row-cols-md-2 g-4">
       </div>
     </section>
@@ -184,8 +184,12 @@ $(document).ready(() => {
     createMainSections(currentPreferences);
   };
 
-  if (!localStorage.getItem("preferences")) {
+  showModal = () => {
     $("#favoriteModal").modal("show");
+  };
+
+  if (!localStorage.getItem("preferences")) {
+    showModal();
   } else {
     getPreferences();
   }
