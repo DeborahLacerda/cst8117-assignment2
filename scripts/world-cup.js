@@ -28,9 +28,8 @@ $(document).ready(() => {
                   <h5 class="card-title">${currentNews.title}</h5>
                   <p class="card-text">${currentNews.description}</p>
                   <p class="card-text">
-                    <small class="text-muted">Author: ${
-                      currentNews.author || "-"
-                    }</small>
+                    <small class="text-muted">Author: ${currentNews.author || "-"
+        }</small>
                   </p>
                 </div>
               </div>
@@ -60,3 +59,11 @@ $(document).ready(() => {
 
   getNews("everything", "world-cup", "world-cup");
 });
+
+// toggle to dark mode
+function themeToggle() {
+  var element = document.body;
+  element.classList.toggle("dark-mode");
+  mode = document.querySelector(".theme-mode");
+  mode.innerHTML = mode.innerHTML === "dark mode" ? "light mode" : "dark mode";
+}

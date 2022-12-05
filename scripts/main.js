@@ -15,9 +15,8 @@ $(document).ready(() => {
       <div class="card mb-3">
           <div class="row g-0">
             <div class="col-md-8">
-                <img src="${
-                  news.urlToImage
-                }" class="img-fluid rounded-start" alt="banner-image" />
+                <img src="${news.urlToImage
+      }" class="img-fluid rounded-start" alt="banner-image" />
               </div>
 
               <div class="col-md-4">
@@ -54,9 +53,8 @@ $(document).ready(() => {
                 <h5 class="card-title">${currentNews.title}</h5>
                 <p class="card-text">${currentNews.description}</p>
                 <p class="card-text">
-                  <small class="text-muted">Author: ${
-                    currentNews.author || "-"
-                  }</small>
+                  <small class="text-muted">Author: ${currentNews.author || "-"
+        }</small>
                 </p>
               </div>
             </div>
@@ -118,3 +116,11 @@ $(document).ready(() => {
   getNews("everything", "", "sports", "sports-news");
   getWeather("weather", "ottawa");
 });
+
+// toggle to dark mode
+function themeToggle() {
+  var element = document.body;
+  element.classList.toggle("dark-mode");
+  mode = document.querySelector(".theme-mode");
+  mode.innerHTML = mode.innerHTML === "dark mode" ? "light mode" : "dark mode";
+}
