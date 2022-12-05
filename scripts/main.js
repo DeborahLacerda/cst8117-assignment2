@@ -4,6 +4,20 @@ $(document).ready(() => {
   const apiKeyNews = "2199460b902247be9f80e58b6078abe9";
   const apiKeyWeather = "d228430a7837ca7c487f6914f626939d";
 
+  const listOfSubjects = [
+    "business",
+    "ottawa",
+    "sports",
+    "basketball",
+    "hockey",
+    "food",
+    "car",
+    "entertainment",
+    "movies",
+    "music",
+    "world",
+  ];
+
   clearList = (fullList) => {
     return fullList.filter(
       (el) => el.author && el.content && el.title && el.urlToImage
@@ -34,9 +48,28 @@ $(document).ready(() => {
     `);
   };
 
+  createMainSections = (itemsStored) => {
+    let totalSubjects = itemsStored.length;
+    for (let i = 0; i < totalSubjects; i++) {
+      let currentSubject = itemsStored[i];
+      getNews("everything", "", `${currentSubject}`, `${currentSubject}-news`);
+    }
+  };
+
+  showSection = (listOfNews, section) => {
+    $("#main-news").append(`
+    <section class="${section}">
+      <h2>${section.split("-").join(" ").toUpperCase()}</h2>
+      <div id="${section}" class="row row-cols-1 row-cols-md-2 g-4">
+      </div>
+    </section>
+  `);
+    showInformation(listOfNews, section);
+  };
+
   showInformation = (listOfNews, divId) => {
     let totalItems = listOfNews.length >= 5 ? 5 : listOfNews.length;
-    for (i = 1; i < totalItems; i++) {
+    for (let i = 1; i < totalItems; i++) {
       let currentNews = listOfNews[i];
       $(`#${divId}`).append(
         `<div class="col card mb-3">
@@ -90,7 +123,8 @@ $(document).ready(() => {
       if (data.articles) {
         cleanedData = clearList(data.articles);
         if (section == "trending-news") showBannerHeader(cleanedData[0]);
-        showInformation(cleanedData, section);
+
+        showSection(cleanedData, section);
       }
     });
 
@@ -114,7 +148,49 @@ $(document).ready(() => {
   };
 
   getNews("top-headlines", "ca", "", "trending-news");
-  getNews("everything", "", "ottawa", "city-news");
-  getNews("everything", "", "sports", "sports-news");
   getWeather("weather", "ottawa");
+
+  showFavoriteList = (listOfSubjects) => {
+    let totalSubjects = listOfSubjects.length;
+    for (let i = 0; i < totalSubjects; i++) {
+      let currentSubject = listOfSubjects[i];
+      $("#modal-body").append(`
+        <div class="checkbox">
+          <input type="checkbox" id=${currentSubject} name="subjects" value="${currentSubject}" />
+          <label for="${currentSubject}">${currentSubject}</label>
+        </div>
+      `);
+    }
+  };
+
+  let itemsStored = [];
+
+  savePreferences = () => {
+    const itemsChecked = $('input[name="subjects"]:checked');
+    itemsStored = [];
+    localStorage.setItem("preferences", JSON.stringify(itemsChecked));
+    $.each(itemsChecked, (index, element) => {
+      itemsStored.push(element.value);
+    });
+    localStorage.setItem("preferences", itemsStored);
+    createMainSections(itemsStored);
+    $("#favoriteModal").modal("hide");
+  };
+
+  showFavoriteList(listOfSubjects);
+
+  getPreferences = () => {
+    let currentPreferences = localStorage.getItem("preferences").split(",");
+    createMainSections(currentPreferences);
+  };
+
+  showModal = () => {
+    $("#favoriteModal").modal("show");
+  };
+
+  if (!localStorage.getItem("preferences")) {
+    showModal();
+  } else {
+    getPreferences();
+  }
 });

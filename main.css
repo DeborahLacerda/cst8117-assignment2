@@ -29,15 +29,16 @@ body {
 
 .footer {
   position: absolute;
+  display: flex;
+  text-align: center;
   bottom: 0;
   width: 100%;
-  height: 60px;
-  line-height: 60px;
   background-color: var(--rifle-green);
+  padding: 20px;
+  color: var(--lavender-gray);
 }
 
 .form {
-  text-align: center;
   color: var(--lavender-gray);
 }
 
@@ -71,7 +72,18 @@ main > .container {
   border: none;
 }
 
-a {
+.modal-body {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.checkbox {
+  width: 33%;
+  text-transform: capitalize;
+}
+
+ul > li > a {
   float: right;
 }
 
@@ -103,5 +115,10 @@ a {
 
 .button {
   background-color: var(--dark-blue-gray);
+  color: var(--lavender-gray);
+}
+
+.btn-link {
+  text-decoration: none;
   color: var(--lavender-gray);
 }
