@@ -71,16 +71,6 @@ main > .container {
   border: none;
 }
 
-.modal-body {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-}
-
-.checkbox {
-  width: 33%;
-  text-transform: capitalize;
-}
 a {
   float: right;
 }
@@ -103,26 +93,4 @@ a {
 .card-body {
   height: 160pt;
   position: relative;
-}
-
-.subscribe {
-  width: 100%;
-  border: none;
-  font-size: 20px;
-}
-
-.button {
-  background-color: var(--dark-blue-gray);
-  color: var(--lavender-gray);
-}
-
-.modal-body {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-}
-
-.checkbox {
-  width: 33%;
-  text-transform: capitalize;
 }
