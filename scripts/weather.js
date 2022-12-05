@@ -238,3 +238,18 @@ function themeToggle() {
     card.style.color = mode.innerHTML === "light mode" ? "white" : "#654f6f";
   })
 }
+
+// validate email
+function ValidateEmail(input) {
+  var validRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+  return validRegex.test(input);
+}
+
+const emailInp = document.querySelector('#email');
+const form = document.querySelector('.form');
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  if (!ValidateEmail(emailInp.value)) {
+    showToastRequest('error', "Email is invalid");
+  }
+})
