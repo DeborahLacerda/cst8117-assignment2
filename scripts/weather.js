@@ -9,7 +9,7 @@ let temperature = document.querySelector(".weather_temperature>.value");
 let forecastBlock = document.querySelector(".weather_forecast");
 let citysearch = document.querySelector('.citysearch');
 let suggestions = document.querySelector("#suggestions");
-let searchBtn = document.querySelector('.search');
+let searchBtn = document.querySelector('#search');
 
 let weatherAPIKey = "d228430a7837ca7c487f6914f626939d";
 let weatherBaseUrl = "https://api.openweathermap.org/data/2.5";
@@ -73,6 +73,7 @@ let getWeatherByCityName = async (cityString) => {
     },
     error: function (xhr) {
       if (xhr.status == 404) {
+        console.log(xhr.status);
         showToastRequest('error', "City not found");
       }
     }
@@ -91,7 +92,7 @@ let getForecastByCityID = async (id) => {
     },
     error: function (xhr) {
       if (xhr.status == 404) {
-        showToastRequest('error', "City not found");
+        console.log(xhr.status);
       }
     }
   });
@@ -149,7 +150,7 @@ searchInp.addEventListener("input", async () => {
     },
     error: function (xhr) {
       if (xhr.status == 404) {
-        showToastRequest('error', "City not found");
+        console.log(xhr.status);
       }
     }
   });
