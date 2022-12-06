@@ -5,6 +5,9 @@
   --dark-blue-gray: #5c5d8d;
   --rifle-green: #3f4739;
   --dark-back: #5c5e65;
+  --dark-card: #5b5b67;
+  --wcard-ligt: #3f473977;
+  --wcard-dark: #60675a;
 }
 
 html {
@@ -14,6 +17,7 @@ html {
 
 body {
   margin-bottom: 60px;
+  color: var(--english-violet);
 }
 
 .footer {
@@ -57,7 +61,13 @@ main>.container {
   margin: 0 1rem;
 }
 
+/* dark theme */
 .dark-mode {
   background-color: var(--dark-back);
+  color: white;
+}
+
+.dark-mode .card-body {
+  background-color: var(--dark-card);
   color: white;
 }

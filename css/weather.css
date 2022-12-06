@@ -5,6 +5,9 @@
   --dark-blue-gray: #5c5d8d;
   --rifle-green: #3f4739;
   --dark-back: #5c5e65;
+  --dark-card: #5b5b67;
+  --wcard-ligt: #3f473977;
+  --wcard-dark: #60675a;
   font-family: "Helvetica Neue", HelveticaNeue, "TeX Gyre Heros", TeXGyreHeros,
     FreeSans, "Nimbus Sans L", "Liberation Sans", Arimo, Helvetica, Arial,
     sans-serif;
@@ -26,6 +29,7 @@ nav {
 
 body {
   min-height: 100vh;
+  color: var(--english-violet);
 }
 
 .footer {
@@ -164,7 +168,7 @@ main>.container {
 
 .weather_forecast_item {
   color: var(--english-violet);
-  background-color: #3f473977;
+  background-color: var(--wcard-ligt);
   border-radius: 10px;
   margin: 0 10px 10px;
   padding: 30px 5px 20px;
@@ -199,7 +203,13 @@ main>.container {
   margin: 0 1rem;
 }
 
+/* dark theme */
 .dark-mode {
   background-color: var(--dark-back);
+  color: white;
+}
+
+.dark-mode .weather_forecast_item {
+  background-color: var(--wcard-dark);
   color: white;
 }

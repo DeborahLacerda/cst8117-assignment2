@@ -5,6 +5,9 @@
   --dark-blue-gray: #5c5d8d;
   --rifle-green: #3f4739;
   --dark-back: #5c5e65;
+  --dark-card: #5b5b67;
+  --wcard-ligt: #3f473977;
+  --wcard-dark: #60675a;
   font-family: "Helvetica Neue", HelveticaNeue, "TeX Gyre Heros", TeXGyreHeros,
     FreeSans, "Nimbus Sans L", "Liberation Sans", Arimo, Helvetica, Arial,
     sans-serif;
@@ -140,7 +143,15 @@ ul>li>a {
   margin: 0 1rem;
 }
 
-.dark-mode {
+/* dark theme */
+.dark-mode,
+.dark-mode main.container,
+.dark-mode .album>.container {
   background-color: var(--dark-back);
+  color: white;
+}
+
+.dark-mode .card-body {
+  background-color: var(--wcard-dark);
   color: white;
 }
