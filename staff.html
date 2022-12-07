@@ -1,169 +1,236 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <script
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
+    ></script>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
+    />
+    <link rel="stylesheet" href="main.css" />
+    <title>JYDM</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" />
-  <link rel="stylesheet" href="main.css" />
-  <title>JYDM</title>
-</head>
-
-<body class="d-flex flex-column h-100">
-  <header>
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top">
-      <div class="container-fluid">
-        <a class="navbar-brand"></a>
-        <img src="images/logo.png" id="logo" />
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
-          aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-          <ul class="navbar-nav me-auto mb-2 mb-md-0">
-            <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="/">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="weather.html">Weather</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="world-cup.html">World Cup</a>
-            </li>
-
-            <li class="nav-item">
-              <a class="nav-link" href="staff.html">About US</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <button onclick="themeToggle()" id="mode">🌙</button>
-    </nav>
-  </header>
-
-  <main class="flex-shrink-0">
-    <section class="py-5 text-center container">
-      <div class="row py-lg-5">
-        <div class="col-lg-6 col-md-8 mx-auto">
-          <h1 class="fw-light">About US</h1>
-        </div>
-      </div>
-    </section>
-
-    <div class="album py-5 bg-light">
-      <div class="container">
-        <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 g-3">
-          <div class="col">
-            <div class="card shadow-sm">
-              <img src="images/Deborah.jpg" class="bd-placeholder-img card-img-top" alt="Deborah" />
-
-              <div class="card-body">
-                <h5 class="card-title">Deborah</h5>
-                <h6 class="card-subtitle mb-2 text-muted">Team Leader</h6>
-                <p class="card-text">
-                  I am a very communicative person who loves all forms of
-                  expression. During Covid, I fell in love with web
-                  development. If you want to grab a coffee and talk about
-                  design and XD I'd love to.
-                </p>
-
-                <div class="d-flex justify-content-between align-items-center">
-                  <a href="https://ca.linkedin.com/in/deborahlms">
-                    <img src="Images/LinkedIn.png" alt="LinkedIn" class="profileLink" /></a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="card shadow-sm">
-              <img src="images/Jane.jpg" class="bd-placeholder-img card-img-top" alt="Jane" />
-
-              <div class="card-body">
-                <h5 class="card-title">Jane</h5>
-                <h6 class="card-subtitle mb-2 text-muted">
-                  Front-End Designer
-                </h6>
-                <p class="card-text">
-                  I have always enjoyed design and over Covid learned a bit
-                  about programming and decided to combine the two.
-                </p>
-
-                <div class="d-flex justify-content-between align-items-center">
-                  <a href="">
-                    <img src="Images/LinkedIn.png" alt="LinkedIn" class="profileLink" /></a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="card shadow-sm">
-              <img src="images/Joseph.jpg" class="bd-placeholder-img card-img-top" alt="Joseph" />
-
-              <div class="card-body">
-                <h5 class="card-title">Joseph</h5>
-                <h6 class="card-subtitle mb-2 text-muted">
-                  Front-End Developer
-                </h6>
-                <p class="card-text">
-                  Front-end web development. HTML, CSS, javascript, Ajax, full
-                  stack web developing.
-                </p>
-
-                <div class="d-flex justify-content-between align-items-center">
-                  <a href="https://ca.linkedin.com/in/joseph-weng-ab754256">
-                    <img src="Images/LinkedIn.png" alt="LinkedIn" class="profileLink" /></a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="card shadow-sm">
-              <img src="images/Isabel.jpg" class="bd-placeholder-img card-img-top" alt="Deborah" />
-
-              <div class="card-body">
-                <h5 class="card-title">Isabel</h5>
-                <h6 class="card-subtitle mb-2 text-muted">Team Leader</h6>
-                <p class="card-text">
-                  I am very curious, and always ready to learn. I love web
-                  development since my first internship. I have worked with
-                  VUE.JS and NUXT for almost 4 years. Want to talk about
-                  technology? Let's have a coffee!
-                </p>
-
-                <div class="d-flex justify-content-between align-items-center">
-                  <a href="https://www.linkedin.com/in/isabel-santiago-107481b8">
-                    <img src="Images/LinkedIn.png" alt="LinkedIn" class="profileLink" /></a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div>
-      <img src="images/group.jpg" alt="group" id="groupImg" />
-    </div>
-  </main>
-
-  <footer class="footer mt-auto">
-    <div class="container">
-      <span class="text-muted">
-        <form class="form">
-          Subscribe to receive the latest updates, news & events.
-          <input type="text" id="email" />
-          <button type="submit" class="btn btn-subscribe btn-sm button search">
-            Subscribe
+  <body class="d-flex flex-column h-100">
+    <header>
+      <nav class="navbar navbar-expand-md navbar-dark fixed-top">
+        <div class="container-fluid">
+          <a class="navbar-brand"></a>
+          <img src="images/logo.png" id="logo" />
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarCollapse"
+            aria-controls="navbarCollapse"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
           </button>
-        </form>
-      </span>
-    </div>
-  </footer>
-  <script src="./scripts/staff.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
-</body>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav me-auto mb-2 mb-md-0">
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="/">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="weather.html">Weather</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="world-cup.html">World Cup</a>
+              </li>
 
+              <li class="nav-item">
+                <a class="nav-link" href="staff.html">About US</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="flex-shrink-0">
+      <section class="py-5 text-center container">
+        <div class="row py-lg-5">
+          <div class="col-lg-6 col-md-8 mx-auto">
+            <h1 class="fw-light">About US</h1>
+          </div>
+        </div>
+      </section>
+
+      <div class="album py-5 backcard">
+        <div class="container">
+          <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 g-3">
+            <div class="col">
+              <div class="card shadow-sm">
+                <img
+                  src="images/Deborah.jpg"
+                  class="bd-placeholder-img card-img-top"
+                  alt="Deborah"
+                />
+
+                <div class="card-body">
+                  <h5 class="card-title">Deborah</h5>
+                  <h6 class="card-subtitle mb-2 text-muted">Team Leader</h6>
+                  <p class="card-text">
+                    I am a very communicative person who loves all forms of
+                    expression. During Covid, I fell in love with web
+                    development. If you want to grab a coffee and talk about
+                    design and XD I'd love to.
+                  </p>
+
+                  <div
+                    class="d-flex justify-content-between align-items-center"
+                  >
+                    <a href="https://ca.linkedin.com/in/deborahlms">
+                      <img
+                        src="Images/LinkedIn.png"
+                        alt="LinkedIn"
+                        class="profileLink"
+                    /></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card shadow-sm">
+                <img
+                  src="images/Jane.jpg"
+                  class="bd-placeholder-img card-img-top"
+                  alt="Jane"
+                />
+
+                <div class="card-body">
+                  <h5 class="card-title">Jane</h5>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    Front-End Designer
+                  </h6>
+                  <p class="card-text">
+                    I have always enjoyed design and over Covid learned a bit
+                    about programming and decided to combine the two.
+                  </p>
+
+                  <div
+                    class="d-flex justify-content-between align-items-center"
+                  >
+                    <a href="">
+                      <img
+                        src="Images/LinkedIn.png"
+                        alt="LinkedIn"
+                        class="profileLink"
+                    /></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card shadow-sm">
+                <img
+                  src="images/Joseph.jpg"
+                  class="bd-placeholder-img card-img-top"
+                  alt="Joseph"
+                />
+
+                <div class="card-body">
+                  <h5 class="card-title">Joseph</h5>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    Front-End Developer
+                  </h6>
+                  <p class="card-text">
+                    Front-end web development. HTML, CSS, javascript, Ajax, full
+                    stack web developing.
+                  </p>
+
+                  <div
+                    class="d-flex justify-content-between align-items-center"
+                  >
+                    <a href="https://ca.linkedin.com/in/joseph-weng-ab754256">
+                      <img
+                        src="Images/LinkedIn.png"
+                        alt="LinkedIn"
+                        class="profileLink"
+                    /></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card shadow-sm">
+                <img
+                  src="images/Isabel.jpg"
+                  class="bd-placeholder-img card-img-top"
+                  alt="Isabel"
+                />
+
+                <div class="card-body">
+                  <h5 class="card-title">Isabel</h5>
+                  <h6 class="card-subtitle mb-2 text-muted">Team Leader</h6>
+                  <p class="card-text">
+                    I am very curious, and always ready to learn. I love web
+                    development since my first internship. I have worked with
+                    VUE.JS and NUXT for almost 4 years. Want to talk about
+                    technology? Let's have a coffee!
+                  </p>
+
+                  <div
+                    class="d-flex justify-content-between align-items-center"
+                  >
+                    <a
+                      href="https://www.linkedin.com/in/isabel-santiago-107481b8"
+                    >
+                      <img
+                        src="Images/LinkedIn.png"
+                        alt="LinkedIn"
+                        class="profileLink"
+                    /></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <img src="images/group.jpg" alt="group" id="groupImg" />
+      </div>
+    </main>
+
+    <footer class="footer mt-auto">
+      <div class="container">
+        <span class="text-muted">
+          <form class="form">
+            Subscribe to receive the latest updates, news & events.
+            <input type="text" id="email" />
+            <button
+              type="submit"
+              class="btn btn-subscribe btn-sm button search"
+            >
+              Subscribe
+            </button>
+            <input type="checkbox" class="checkbox" id="checkbox">
+            <label for="checkbox" class="label">
+              
+              <div class='ball'>
+            </label>
+          </form>
+        </span>
+      </div>
+    </footer>
+    <script src="./scripts/staff.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/toastify-js"
+    ></script>
+  </body>
 </html>

@@ -7,9 +7,9 @@ let pressure = document.querySelector(".weather_indicator-pressure>.value");
 let image = document.querySelector(".weather_image");
 let temperature = document.querySelector(".weather_temperature>.value");
 let forecastBlock = document.querySelector(".weather_forecast");
-let citysearch = document.querySelector('.citysearch');
+let citysearch = document.querySelector(".citysearch");
 let suggestions = document.querySelector("#suggestions");
-let searchBtn = document.querySelector('#search');
+let searchBtn = document.querySelector("#search");
 
 let weatherAPIKey = "d228430a7837ca7c487f6914f626939d";
 let weatherBaseUrl = "https://api.openweathermap.org/data/2.5";
@@ -74,9 +74,9 @@ let getWeatherByCityName = async (cityString) => {
     error: function (xhr) {
       if (xhr.status == 404) {
         console.log(xhr.status);
-        showToastRequest('error', "City not found");
+        showToastRequest("error", "City not found");
       }
-    }
+    },
   });
   return weather;
 };
@@ -94,7 +94,7 @@ let getForecastByCityID = async (id) => {
       if (xhr.status == 404) {
         console.log(xhr.status);
       }
-    }
+    },
   });
 
   let forecastList = forecast.list;
@@ -127,21 +127,13 @@ let init = () => {
 
 init();
 
-citysearch.addEventListener('submit', (e) => {
+citysearch.addEventListener("submit", (e) => {
   e.preventDefault();
 
-  searchInp.addEventListener("keydown", async (e) => {
-    if (e.keyCode === 13) {
-      weatherForCity(searchInp.value);
-    }
-  });
-  searchBtn.addEventListener("click", function () {
-    weatherForCity(searchInp.value);
-  })
-})
+  weatherForCity(searchInp.value);
+});
 
-
-searchInp.addEventListener("input", async () => {
+const updateCitySuggestions = async () => {
   let result = await $.ajax({
     url: `${cityBaseUrl}/cities`,
     type: "GET",
@@ -152,7 +144,7 @@ searchInp.addEventListener("input", async () => {
       if (xhr.status == 404) {
         console.log(xhr.status);
       }
-    }
+    },
   });
 
   suggestions.innerHTML = "";
@@ -163,7 +155,8 @@ searchInp.addEventListener("input", async () => {
     option.value = cities[i].matching_full_name;
     suggestions.appendChild(option);
   }
-});
+};
+searchInp.addEventListener("input", updateCitySuggestions);
 
 let updateCurrentWeather = (data) => {
   city.textContent = data.name + ", " + data.sys.country;
@@ -222,16 +215,17 @@ showToastRequest = (type, content) => {
     position: "right",
     stopOnFocus: true,
     style: {
-      background: `${type == 'error' ? 'red' : 'green'}`
+      background: `${type == "error" ? "#5c5d8d" : "#3f4739"}`,
     },
   }).showToast();
 };
 
 // toggle to dark mode
-function themeToggle() {
-  var element = document.body;
-  element.classList.toggle("dark-mode");
-}
+
+const checkbox = document.getElementById("checkbox");
+checkbox.addEventListener("change", () => {
+  document.body.classList.toggle("dark-mode");
+});
 
 // validate email
 function ValidateEmail(input) {
@@ -239,11 +233,11 @@ function ValidateEmail(input) {
   return validRegex.test(input);
 }
 
-const emailInp = document.querySelector('#email');
-const form = document.querySelector('.form');
-form.addEventListener('submit', (e) => {
+const emailInp = document.querySelector("#email");
+const form = document.querySelector(".form");
+form.addEventListener("submit", (e) => {
   e.preventDefault();
   if (!ValidateEmail(emailInp.value)) {
-    showToastRequest('error', "Email is invalid");
+    showToastRequest("error", "Email is invalid");
   }
-})
+});

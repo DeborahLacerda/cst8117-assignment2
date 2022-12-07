@@ -28,8 +28,9 @@ $(document).ready(() => {
                   <h5 class="card-title">${currentNews.title}</h5>
                   <p class="card-text">${currentNews.description}</p>
                   <p class="card-text">
-                    <small class="text-muted">Author: ${currentNews.author || "-"
-        }</small>
+                    <small class="text-muted">Author: ${
+                      currentNews.author || "-"
+                    }</small>
                   </p>
                 </div>
               </div>
@@ -69,17 +70,17 @@ showToastRequest = (type, content) => {
     position: "right",
     stopOnFocus: true,
     style: {
-      background: `${type == 'error' ? 'red' : 'green'}`
+      background: `${type == "error" ? "#5c5d8d" : "#3f4739"}`,
     },
   }).showToast();
 };
 
 // toggle to dark mode
-// toggle to dark mode
-function themeToggle() {
-  var element = document.body;
-  element.classList.toggle("dark-mode");
-}
+
+const checkbox = document.getElementById("checkbox");
+checkbox.addEventListener("change", () => {
+  document.body.classList.toggle("dark-mode");
+});
 
 // validate email
 function ValidateEmail(input) {
@@ -87,11 +88,11 @@ function ValidateEmail(input) {
   return validRegex.test(input);
 }
 
-const emailInp = document.querySelector('#email');
-const form = document.querySelector('.form');
-form.addEventListener('submit', (e) => {
+const emailInp = document.querySelector("#email");
+const form = document.querySelector(".form");
+form.addEventListener("submit", (e) => {
   e.preventDefault();
   if (!ValidateEmail(emailInp.value)) {
-    showToastRequest('error', "Email is invalid");
+    showToastRequest("error", "Email is invalid");
   }
-})
+});
