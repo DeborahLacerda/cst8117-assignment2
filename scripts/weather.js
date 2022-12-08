@@ -213,6 +213,12 @@ searchBtn.addEventListener("click", () => {
   weatherForCity(searchInp.value);
 });
 
+searchInp.addEventListener("keydown", async (e) => {
+  if (e.keyCode === 13) {
+    weatherForCity(searchInp.value);
+  }
+});
+
 let dayOfWeek = (dt = new Date().getTime()) => {
   return new Date(dt).toLocaleDateString("en-En", { weekday: "long" });
 };
