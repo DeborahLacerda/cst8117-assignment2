@@ -60,3 +60,41 @@ $(document).ready(() => {
 
   getNews("everything", "world-cup", "world-cup");
 });
+
+showToastRequest = (type, content) => {
+  Toastify({
+    text: `${content}`,
+    duration: 2000,
+    close: false,
+    gravity: "top",
+    position: "right",
+    stopOnFocus: true,
+    style: {
+      background: `${type == "error" ? "#5c5d8d" : "#3f4739"}`,
+    },
+  }).showToast();
+};
+
+// toggle to dark mode
+
+const checkbox = document.getElementById("checkbox");
+checkbox.addEventListener("change", () => {
+  document.body.classList.toggle("dark-mode");
+});
+
+// validate email
+function ValidateEmail(input) {
+  var validRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+  return validRegex.test(input);
+}
+
+const emailInp = document.querySelector("#email");
+const form = document.querySelector(".form");
+form.addEventListener("submit", (e) => {
+  console.log("submit");
+
+  e.preventDefault();
+  if (!ValidateEmail(emailInp.value)) {
+    showToastRequest("error", "Email is invalid");
+  }
+});

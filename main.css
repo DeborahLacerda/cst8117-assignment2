@@ -4,9 +4,10 @@
   --lavender-gray: #bbb5bd;
   --dark-blue-gray: #5c5d8d;
   --rifle-green: #3f4739;
-  font-family: "Helvetica Neue", HelveticaNeue, "TeX Gyre Heros", TeXGyreHeros,
-    FreeSans, "Nimbus Sans L", "Liberation Sans", Arimo, Helvetica, Arial,
-    sans-serif;
+  --dark-back: #5c5e65;
+  --dark-card: #5b5b67;
+  --wcard-ligt: #3f473977;
+  --wcard-dark: #60675a;
 }
 
 html {
@@ -25,6 +26,7 @@ nav {
 
 body {
   margin-bottom: 60px;
+  font-family: Open Sans, sans-serif !important;
 }
 
 .footer {
@@ -45,10 +47,6 @@ body {
 .button {
   background-color: var(--dark-blue-gray);
   color: var(--lavender-gray);
-}
-
-input {
-  height: 50%;
 }
 
 body > .container {
@@ -99,9 +97,11 @@ ul > li > a {
   display: block;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 20px;
   padding: 30px;
   border-radius: 34px;
 }
+
 .card-body {
   height: 160pt;
   position: relative;
@@ -121,4 +121,69 @@ ul > li > a {
 .btn-link {
   text-decoration: none;
   color: var(--lavender-gray);
+}
+
+.btns {
+  color: var(--bg);
+  border: 2px solid var(--bg);
+  margin-left: 3%;
+}
+
+.btns:hover {
+  background-color: var(--lavender-gray);
+}
+
+/*  dark mode */
+
+.checkbox {
+  opacity: 0;
+  position: absolute;
+}
+
+.label {
+  width: 40px;
+  height: 18px;
+  background-color: var(--dark-blue-gray);
+  display: flex;
+  border-radius: 50px;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  transform: scale(1.2);
+}
+
+.ball {
+  width: 15px;
+  height: 15px;
+  background-color: var(--bg);
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  border-radius: 50%;
+  transition: transform 0.2s linear;
+}
+
+/*  target the elemenent after the label*/
+.checkbox:checked + .label .ball {
+  transform: translateX(25px);
+}
+
+/* dark theme */
+.dark-mode {
+  background-color: var(--dark-back);
+  color: var(--bg);
+}
+
+.dark-mode .weather_forecast_item {
+  background-color: var(--wcard-dark);
+  color: var(--bg);
+}
+.dark-mode .card {
+  background-color: var(--wcard-dark);
+}
+.dark-mode .text-muted {
+  color: var(--lavender-gray) !important;
+}
+.dark-mode .backcard {
+  background-color: var(--dark-back);
 }
