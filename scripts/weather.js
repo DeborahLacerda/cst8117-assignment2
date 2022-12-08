@@ -7,8 +7,9 @@ let pressure = document.querySelector(".weather_indicator-pressure>.value");
 let image = document.querySelector(".weather_image");
 let temperature = document.querySelector(".weather_temperature>.value");
 let forecastBlock = document.querySelector(".weather_forecast");
+let citysearch = document.querySelector(".citysearch");
 let suggestions = document.querySelector("#suggestions");
-let searchBtn = document.querySelector('.search');
+let searchBtn = document.querySelector("#weather_search");
 
 let weatherAPIKey = "d228430a7837ca7c487f6914f626939d";
 let weatherBaseUrl = "https://api.openweathermap.org/data/2.5";
@@ -53,6 +54,20 @@ let weatherImages = [
   },
 ];
 
+showToastRequest = (type, content) => {
+  Toastify({
+    text: `${content}`,
+    duration: 2000,
+    close: false,
+    gravity: "top",
+    position: "right",
+    stopOnFocus: true,
+    style: {
+      background: `${type == "error" ? "#BA0E25" : "#3f4739"}`,
+    },
+  }).showToast();
+};
+
 let getWeatherByCityName = async (cityString) => {
   let city;
   if (cityString.includes(",")) {
@@ -70,8 +85,8 @@ let getWeatherByCityName = async (cityString) => {
       appid: weatherAPIKey,
       q: city,
     },
-    error: function (error) {
-      alert(error.statusText);
+    error: (error) => {
+      showToastRequest("error", error.responseJSON.message);
     },
   });
   return weather;
@@ -86,8 +101,8 @@ let getForecastByCityID = async (id) => {
       appid: weatherAPIKey,
       id: id,
     },
-    error: function (error) {
-      alert(error.statusText);
+    error: (error) => {
+      showToastRequest("error", error.responseJSON.message);
     },
   });
 
@@ -121,36 +136,10 @@ let init = () => {
 
 init();
 
-searchInp.addEventListener("keydown", async (e) => {
-  if (e.keyCode === 13) {
-    weatherForCity(searchInp.value);
-  }
-});
+citysearch.addEventListener("submit", (e) => {
+  e.preventDefault();
 
-searchBtn.addEventListener("click", function () {
   weatherForCity(searchInp.value);
-})
-
-searchInp.addEventListener("input", async () => {
-  let result = await $.ajax({
-    url: `${cityBaseUrl}/cities`,
-    type: "GET",
-    data: {
-      search: searchInp.value,
-    },
-    error: function (error) {
-      alert(error.statusText);
-    },
-  });
-
-  suggestions.innerHTML = "";
-  let cities = result._embedded["city:search-results"];
-  let length = cities.length > 5 ? 5 : cities.length;
-  for (let i = 0; i < length; i++) {
-    let option = document.createElement("option");
-    option.value = cities[i].matching_full_name;
-    suggestions.appendChild(option);
-  }
 });
 
 let updateCurrentWeather = (data) => {
@@ -197,6 +186,61 @@ let updateForecast = (forecast) => {
   });
 };
 
+const updateCitySuggestions = async () => {
+  let result = await $.ajax({
+    url: `${cityBaseUrl}/cities`,
+    type: "GET",
+    data: {
+      search: searchInp.value,
+    },
+    error: (error) => {
+      showToastRequest("error", error.responseJSON.message);
+    },
+  });
+
+  suggestions.innerHTML = "";
+  let cities = result._embedded["city:search-results"];
+  let length = cities.length > 5 ? 5 : cities.length;
+  for (let i = 0; i < length; i++) {
+    let option = document.createElement("option");
+    option.value = cities[i].matching_full_name;
+    suggestions.appendChild(option);
+  }
+};
+searchInp.addEventListener("input", updateCitySuggestions);
+
+searchBtn.addEventListener("click", () => {
+  weatherForCity(searchInp.value);
+});
+
+searchInp.addEventListener("keydown", async (e) => {
+  if (e.keyCode === 13) {
+    weatherForCity(searchInp.value);
+  }
+});
+
 let dayOfWeek = (dt = new Date().getTime()) => {
   return new Date(dt).toLocaleDateString("en-En", { weekday: "long" });
 };
+
+// toggle to dark mode
+
+const checkbox = document.getElementById("checkbox");
+checkbox.addEventListener("change", () => {
+  document.body.classList.toggle("dark-mode");
+});
+
+// validate email
+function ValidateEmail(input) {
+  var validRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+  return validRegex.test(input);
+}
+
+const emailInp = document.querySelector("#email");
+const form = document.querySelector(".form");
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  if (!ValidateEmail(emailInp.value)) {
+    showToastRequest("error", "Email is invalid");
+  }
+});

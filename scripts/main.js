@@ -1,8 +1,10 @@
 $(document).ready(() => {
   const baseUrlNews = "https://newsapi.org/v2";
   const baseUrlWeather = "https://api.openweathermap.org/data/2.5/";
-  const apiKeyNews = "2199460b902247be9f80e58b6078abe9";
+  const apiKeyNews = "82bdca288945450d9ad20f5253a5f8e3";
   const apiKeyWeather = "d228430a7837ca7c487f6914f626939d";
+
+  let currentSections = localStorage.getItem("preferences");
 
   const listOfSubjects = [
     "business",
@@ -50,6 +52,11 @@ $(document).ready(() => {
 
   createMainSections = (itemsStored) => {
     let totalSubjects = itemsStored.length;
+    document
+      .querySelectorAll(
+        "div#main-news section:not(.banner):not(.trending-news)"
+      )
+      .forEach((el) => el.remove());
     for (let i = 0; i < totalSubjects; i++) {
       let currentSubject = itemsStored[i];
       getNews("everything", "", `${currentSubject}`, `${currentSubject}-news`);
@@ -103,10 +110,10 @@ $(document).ready(() => {
     let currentCity = data.name;
     let currentDate = new Date().toDateString();
     $(".weather").append(`
-    <span class="d-flex ">
-      <h4 class="pe-4">${currentCity} ${currentTemperature}</h4>
-      <h4>${currentDate}</h4>
-    </span>
+      <span class="d-flex ">
+        <h4 class="pe-4">${currentCity} ${currentTemperature}</h4>
+        <h4>${currentDate}</h4>
+      </span>
     `);
   };
 
@@ -155,7 +162,7 @@ $(document).ready(() => {
     for (let i = 0; i < totalSubjects; i++) {
       let currentSubject = listOfSubjects[i];
       $("#modal-body").append(`
-        <div class="checkbox">
+        <div class="checkbox-preferences">
           <input type="checkbox" id=${currentSubject} name="subjects" value="${currentSubject}" />
           <label for="${currentSubject}">${currentSubject}</label>
         </div>
@@ -168,7 +175,7 @@ $(document).ready(() => {
   savePreferences = () => {
     const itemsChecked = $('input[name="subjects"]:checked');
     itemsStored = [];
-    localStorage.setItem("preferences", JSON.stringify(itemsChecked));
+    //localStorage.setItem("preferences", JSON.stringify(itemsChecked));
     $.each(itemsChecked, (index, element) => {
       itemsStored.push(element.value);
     });
@@ -192,5 +199,40 @@ $(document).ready(() => {
     showModal();
   } else {
     getPreferences();
+  }
+});
+showToastRequest = (type, content) => {
+  Toastify({
+    text: `${content}`,
+    duration: 2000,
+    close: false,
+    gravity: "top",
+    position: "right",
+    stopOnFocus: true,
+    style: {
+      background: `${type == "error" ? "#BA0E25" : "#3f4739"}`,
+    },
+  }).showToast();
+};
+
+// toggle to dark mode
+
+const checkbox = document.getElementById("checkbox");
+checkbox.addEventListener("change", () => {
+  document.body.classList.toggle("dark-mode");
+});
+
+// validate email
+function ValidateEmail(input) {
+  var validRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+  return validRegex.test(input);
+}
+
+const emailInp = document.querySelector("#email");
+const form = document.querySelector(".form");
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  if (!ValidateEmail(emailInp.value)) {
+    showToastRequest("error", "Email is invalid");
   }
 });

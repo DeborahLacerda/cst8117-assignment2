@@ -1,6 +1,6 @@
 $(document).ready(() => {
   const baseUrlNews = "https://newsapi.org/v2";
-  const apiKeyNews = "2199460b902247be9f80e58b6078abe9";
+  const apiKeyNews = "82bdca288945450d9ad20f5253a5f8e3";
 
   clearList = (fullList) => {
     return fullList.filter(
@@ -59,4 +59,40 @@ $(document).ready(() => {
   };
 
   getNews("everything", "world-cup", "world-cup");
+});
+
+showToastRequest = (type, content) => {
+  Toastify({
+    text: `${content}`,
+    duration: 2000,
+    close: false,
+    gravity: "top",
+    position: "right",
+    stopOnFocus: true,
+    style: {
+      background: `${type == "error" ? "#BA0E25" : "#3f4739"}`,
+    },
+  }).showToast();
+};
+
+// toggle to dark mode
+
+const checkbox = document.getElementById("checkbox");
+checkbox.addEventListener("change", () => {
+  document.body.classList.toggle("dark-mode");
+});
+
+// validate email
+function ValidateEmail(input) {
+  var validRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+  return validRegex.test(input);
+}
+
+const emailInp = document.querySelector("#email");
+const form = document.querySelector(".form");
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  if (!ValidateEmail(emailInp.value)) {
+    showToastRequest("error", "Email is invalid");
+  }
 });

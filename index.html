@@ -4,6 +4,13 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
+    />
+
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -113,20 +120,28 @@
             Subscribe to receive the latest updates, news & events.
             <input type="text" id="email" />
             <button
-              type="button"
+              type="submit"
               class="btn btn-subscribe btn-sm button search"
             >
               Subscribe
             </button>
           </form>
         </span>
-
+        <input type="checkbox" class="checkbox" id="checkbox" />
+        <label for="checkbox" class="label">
+          <div class="ball"></div>
+        </label>
         <button type="button" class="btn btn-link" onclick="showModal()">
           Change prefereces
         </button>
       </div>
     </footer>
     <script src="/scripts/main.js"></script>
+    <script src="/scripts/preferences.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/toastify-js"
+    ></script>
   </body>
 </html>

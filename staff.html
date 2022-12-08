@@ -5,6 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
+    />
+    <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
@@ -63,7 +68,7 @@
         </div>
       </section>
 
-      <div class="album py-5 bg-light">
+      <div class="album py-5 backcard">
         <div class="container">
           <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 g-3">
             <div class="col">
@@ -74,9 +79,11 @@
                   alt="Deborah"
                 />
 
-                <div class="card-body">
+                <div class="card-body-staff">
                   <h5 class="card-title">Deborah</h5>
-                  <h6 class="card-subtitle mb-2 text-muted">Team Leader</h6>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    Project manager & Front-end developer
+                  </h6>
                   <p class="card-text">
                     I am a very communicative person who loves all forms of
                     expression. During Covid, I fell in love with web
@@ -105,7 +112,7 @@
                   alt="Jane"
                 />
 
-                <div class="card-body">
+                <div class="card-body-staff">
                   <h5 class="card-title">Jane</h5>
                   <h6 class="card-subtitle mb-2 text-muted">
                     Front-End Designer
@@ -136,7 +143,7 @@
                   alt="Joseph"
                 />
 
-                <div class="card-body">
+                <div class="card-body-staff">
                   <h5 class="card-title">Joseph</h5>
                   <h6 class="card-subtitle mb-2 text-muted">
                     Front-End Developer
@@ -164,17 +171,19 @@
                 <img
                   src="images/Isabel.jpg"
                   class="bd-placeholder-img card-img-top"
-                  alt="Deborah"
+                  alt="Isabel"
                 />
 
-                <div class="card-body">
+                <div class="card-body-staff">
                   <h5 class="card-title">Isabel</h5>
-                  <h6 class="card-subtitle mb-2 text-muted">Team Leader</h6>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    Team Leader & Front-end developer
+                  </h6>
                   <p class="card-text">
                     I am very curious, and always ready to learn. I love web
                     development since my first internship. I have worked with
                     VUE.JS and NUXT for almost 4 years. Want to talk about
-                    technology? Let's have a coffee!
+                    technology? Let's grab a coffee!
                   </p>
 
                   <div
@@ -207,16 +216,24 @@
             Subscribe to receive the latest updates, news & events.
             <input type="text" id="email" />
             <button
-              type="button"
+              type="submit"
               class="btn btn-subscribe btn-sm button search"
             >
               Subscribe
             </button>
           </form>
+          <input type="checkbox" class="checkbox" id="checkbox" />
+          <label for="checkbox" class="label">
+            <div class="ball"></div>
+          </label>
         </span>
       </div>
     </footer>
-
+    <script src="./scripts/staff.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/toastify-js"
+    ></script>
   </body>
 </html>
