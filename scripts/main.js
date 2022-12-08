@@ -4,6 +4,8 @@ $(document).ready(() => {
   const apiKeyNews = "2199460b902247be9f80e58b6078abe9";
   const apiKeyWeather = "d228430a7837ca7c487f6914f626939d";
 
+  let currentSections = localStorage.getItem("preferences");
+
   const listOfSubjects = [
     "business",
     "ottawa",
@@ -103,10 +105,10 @@ $(document).ready(() => {
     let currentCity = data.name;
     let currentDate = new Date().toDateString();
     $(".weather").append(`
-    <span class="d-flex ">
-      <h4 class="pe-4">${currentCity} ${currentTemperature}</h4>
-      <h4>${currentDate}</h4>
-    </span>
+      <span class="d-flex ">
+        <h4 class="pe-4">${currentCity} ${currentTemperature}</h4>
+        <h4>${currentDate}</h4>
+      </span>
     `);
   };
 
@@ -155,7 +157,7 @@ $(document).ready(() => {
     for (let i = 0; i < totalSubjects; i++) {
       let currentSubject = listOfSubjects[i];
       $("#modal-body").append(`
-        <div class="checkbox">
+        <div class="checkbox-preferences">
           <input type="checkbox" id=${currentSubject} name="subjects" value="${currentSubject}" />
           <label for="${currentSubject}">${currentSubject}</label>
         </div>

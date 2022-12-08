@@ -76,7 +76,7 @@ main > .container {
   flex-wrap: wrap;
 }
 
-.checkbox {
+.checkbox-preferences {
   width: 33%;
   text-transform: capitalize;
 }
