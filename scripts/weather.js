@@ -9,7 +9,7 @@ let temperature = document.querySelector(".weather_temperature>.value");
 let forecastBlock = document.querySelector(".weather_forecast");
 let citysearch = document.querySelector(".citysearch");
 let suggestions = document.querySelector("#suggestions");
-let searchBtn = document.querySelector("#search");
+let searchBtn = document.querySelector("#weather_search");
 
 let weatherAPIKey = "d228430a7837ca7c487f6914f626939d";
 let weatherBaseUrl = "https://api.openweathermap.org/data/2.5";
@@ -133,31 +133,6 @@ citysearch.addEventListener("submit", (e) => {
   weatherForCity(searchInp.value);
 });
 
-const updateCitySuggestions = async () => {
-  let result = await $.ajax({
-    url: `${cityBaseUrl}/cities`,
-    type: "GET",
-    data: {
-      search: searchInp.value,
-    },
-    error: function (xhr) {
-      if (xhr.status == 404) {
-        console.log(xhr.status);
-      }
-    },
-  });
-
-  suggestions.innerHTML = "";
-  let cities = result._embedded["city:search-results"];
-  let length = cities.length > 5 ? 5 : cities.length;
-  for (let i = 0; i < length; i++) {
-    let option = document.createElement("option");
-    option.value = cities[i].matching_full_name;
-    suggestions.appendChild(option);
-  }
-};
-searchInp.addEventListener("input", updateCitySuggestions);
-
 let updateCurrentWeather = (data) => {
   city.textContent = data.name + ", " + data.sys.country;
   day.textContent = dayOfWeek();
@@ -201,6 +176,35 @@ let updateForecast = (forecast) => {
     forecastBlock.insertAdjacentHTML("beforeend", forecastItem);
   });
 };
+
+const updateCitySuggestions = async () => {
+  let result = await $.ajax({
+    url: `${cityBaseUrl}/cities`,
+    type: "GET",
+    data: {
+      search: searchInp.value,
+    },
+    error: function (xhr) {
+      if (xhr.status == 404) {
+        console.log(xhr.status);
+      }
+    },
+  });
+
+  suggestions.innerHTML = "";
+  let cities = result._embedded["city:search-results"];
+  let length = cities.length > 5 ? 5 : cities.length;
+  for (let i = 0; i < length; i++) {
+    let option = document.createElement("option");
+    option.value = cities[i].matching_full_name;
+    suggestions.appendChild(option);
+  }
+};
+searchInp.addEventListener("input", updateCitySuggestions);
+
+searchBtn.addEventListener("click", () => {
+  weatherForCity(searchInp.value);
+});
 
 let dayOfWeek = (dt = new Date().getTime()) => {
   return new Date(dt).toLocaleDateString("en-En", { weekday: "long" });
