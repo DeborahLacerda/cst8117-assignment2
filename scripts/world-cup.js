@@ -70,7 +70,7 @@ showToastRequest = (type, content) => {
     position: "right",
     stopOnFocus: true,
     style: {
-      background: `${type == "error" ? "#5c5d8d" : "#3f4739"}`,
+      background: `${type == "error" ? "#BA0E25" : "#3f4739"}`,
     },
   }).showToast();
 };
