@@ -1,7 +1,7 @@
 $(document).ready(() => {
   const baseUrlNews = "https://newsapi.org/v2";
   const baseUrlWeather = "https://api.openweathermap.org/data/2.5/";
-  const apiKeyNews = "2199460b902247be9f80e58b6078abe9";
+  const apiKeyNews = "82bdca288945450d9ad20f5253a5f8e3";
   const apiKeyWeather = "d228430a7837ca7c487f6914f626939d";
 
   let currentSections = localStorage.getItem("preferences");
@@ -52,6 +52,11 @@ $(document).ready(() => {
 
   createMainSections = (itemsStored) => {
     let totalSubjects = itemsStored.length;
+    document
+      .querySelectorAll(
+        "div#main-news section:not(.banner):not(.trending-news)"
+      )
+      .forEach((el) => el.remove());
     for (let i = 0; i < totalSubjects; i++) {
       let currentSubject = itemsStored[i];
       getNews("everything", "", `${currentSubject}`, `${currentSubject}-news`);
@@ -170,7 +175,7 @@ $(document).ready(() => {
   savePreferences = () => {
     const itemsChecked = $('input[name="subjects"]:checked');
     itemsStored = [];
-    localStorage.setItem("preferences", JSON.stringify(itemsChecked));
+    //localStorage.setItem("preferences", JSON.stringify(itemsChecked));
     $.each(itemsChecked, (index, element) => {
       itemsStored.push(element.value);
     });

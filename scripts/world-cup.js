@@ -1,6 +1,6 @@
 $(document).ready(() => {
   const baseUrlNews = "https://newsapi.org/v2";
-  const apiKeyNews = "2199460b902247be9f80e58b6078abe9";
+  const apiKeyNews = "82bdca288945450d9ad20f5253a5f8e3";
 
   clearList = (fullList) => {
     return fullList.filter(
