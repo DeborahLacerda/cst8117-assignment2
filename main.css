@@ -49,6 +49,10 @@ body {
   color: var(--lavender-gray);
 }
 
+.button:hover {
+  background-color: var(--english-violet);
+}
+
 body > .container {
   padding: 60px 15px 0;
 }
@@ -60,10 +64,6 @@ main > .container {
 .footer > .container {
   padding-right: 5px;
   padding-left: 5px;
-}
-
-#groupImg {
-  float: center;
 }
 
 .card {
@@ -94,6 +94,7 @@ ul > li > a {
 }
 
 #groupImg {
+  float: center;
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -113,24 +114,9 @@ ul > li > a {
   font-size: 20px;
 }
 
-.button {
-  background-color: var(--dark-blue-gray);
-  color: var(--lavender-gray);
-}
-
 .btn-link {
   text-decoration: none;
   color: var(--lavender-gray);
-}
-
-.btns {
-  color: var(--bg);
-  border: 2px solid var(--bg);
-  margin-left: 3%;
-}
-
-.btns:hover {
-  background-color: var(--lavender-gray);
 }
 
 /*  dark mode */
