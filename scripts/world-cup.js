@@ -91,8 +91,6 @@ function ValidateEmail(input) {
 const emailInp = document.querySelector("#email");
 const form = document.querySelector(".form");
 form.addEventListener("submit", (e) => {
-  console.log("submit");
-
   e.preventDefault();
   if (!ValidateEmail(emailInp.value)) {
     showToastRequest("error", "Email is invalid");
