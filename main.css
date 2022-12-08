@@ -103,8 +103,13 @@ ul > li > a {
   border-radius: 34px;
 }
 
-.card-body {
+.card-body-staff {
   height: 160pt;
+  position: relative;
+}
+
+.card-body {
+  height: auto;
   position: relative;
 }
 

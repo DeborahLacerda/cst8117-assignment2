@@ -98,7 +98,7 @@ ul > li > a {
 }
 
 .card-body {
-  height: 160pt;
+  height: auto;
   position: relative;
 }
 
