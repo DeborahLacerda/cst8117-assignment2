@@ -45,11 +45,6 @@ body {
   color: var(--lavender-gray);
 }
 
-.button {
-  background-color: var(--dark-blue-gray);
-  color: var(--lavender-gray);
-}
-
 body > .container {
   padding: 60px;
   font-family: Open Sans, sans-serif !important;
@@ -59,17 +54,18 @@ main > .container {
   margin-top: 70px;
 }
 
+.button {
+  background-color: var(--dark-blue-gray);
+  color: var(--lavender-gray);
+}
+
+.button:hover {
+  background-color: var(--english-violet);
+}
+
 .footer > .container {
   padding-right: 5px;
   padding-left: 5px;
-}
-
-#groupImg {
-  float: center;
-}
-
-.card {
-  border: none;
 }
 
 .citysearch label {
@@ -185,16 +181,6 @@ main > .container {
   text-align: end;
 }
 
-.btns {
-  color: var(--bg);
-  border: 2px solid var(--bg);
-  margin-left: 3%;
-}
-
-.btns:hover {
-  background-color: var(--lavender-gray);
-}
-
 /*  dark mode */
 
 .checkbox {
@@ -239,10 +225,4 @@ main > .container {
 .dark-mode .weather_forecast_item {
   background-color: var(--wcard-dark);
   color: var(--bg);
-}
-.dark-mode .card {
-  background-color: var(--wcard-dark);
-}
-.dark-mode .text-muted {
-  color: var(--lavender-gray) !important;
 }

@@ -44,11 +44,6 @@ body {
   color: var(--lavender-gray);
 }
 
-.button {
-  background-color: var(--dark-blue-gray);
-  color: var(--lavender-gray);
-}
-
 body > .container {
   padding: 60px 15px 0;
 }
@@ -118,19 +113,8 @@ ul > li > a {
   color: var(--lavender-gray);
 }
 
-.btn-link {
-  text-decoration: none;
-  color: var(--lavender-gray);
-}
-
-.btns {
-  color: var(--bg);
-  border: 2px solid var(--bg);
-  margin-left: 3%;
-}
-
-.btns:hover {
-  background-color: var(--lavender-gray);
+.button:hover {
+  background-color: var(--english-violet);
 }
 
 /*  dark mode */
