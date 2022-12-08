@@ -54,6 +54,20 @@ let weatherImages = [
   },
 ];
 
+showToastRequest = (type, content) => {
+  Toastify({
+    text: `${content}`,
+    duration: 2000,
+    close: false,
+    gravity: "top",
+    position: "right",
+    stopOnFocus: true,
+    style: {
+      background: `${type == "error" ? "#BA0E25" : "#3f4739"}`,
+    },
+  }).showToast();
+};
+
 let getWeatherByCityName = async (cityString) => {
   let city;
   if (cityString.includes(",")) {
@@ -71,11 +85,8 @@ let getWeatherByCityName = async (cityString) => {
       appid: weatherAPIKey,
       q: city,
     },
-    error: function (xhr) {
-      if (xhr.status == 404) {
-        console.log(xhr.status);
-        showToastRequest("error", "City not found");
-      }
+    error: (error) => {
+      showToastRequest("error", error.responseJSON.message);
     },
   });
   return weather;
@@ -90,10 +101,8 @@ let getForecastByCityID = async (id) => {
       appid: weatherAPIKey,
       id: id,
     },
-    error: function (xhr) {
-      if (xhr.status == 404) {
-        console.log(xhr.status);
-      }
+    error: (error) => {
+      showToastRequest("error", error.responseJSON.message);
     },
   });
 
@@ -184,10 +193,8 @@ const updateCitySuggestions = async () => {
     data: {
       search: searchInp.value,
     },
-    error: function (xhr) {
-      if (xhr.status == 404) {
-        console.log(xhr.status);
-      }
+    error: (error) => {
+      showToastRequest("error", error.responseJSON.message);
     },
   });
 
@@ -208,20 +215,6 @@ searchBtn.addEventListener("click", () => {
 
 let dayOfWeek = (dt = new Date().getTime()) => {
   return new Date(dt).toLocaleDateString("en-En", { weekday: "long" });
-};
-
-showToastRequest = (type, content) => {
-  Toastify({
-    text: `${content}`,
-    duration: 2000,
-    close: false,
-    gravity: "top",
-    position: "right",
-    stopOnFocus: true,
-    style: {
-      background: `${type == "error" ? "#5c5d8d" : "#3f4739"}`,
-    },
-  }).showToast();
 };
 
 // toggle to dark mode
