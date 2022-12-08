@@ -178,3 +178,7 @@ ul > li > a {
 .dark-mode .backcard {
   background-color: var(--dark-back);
 }
+
+.preferece-btn:hover {
+  color: white;
+}
