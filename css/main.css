@@ -93,16 +93,6 @@ ul > li > a {
   right: 0;
 }
 
-#groupImg {
-  float: center;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 20px;
-  padding: 30px;
-  border-radius: 34px;
-}
-
 .card-body-staff {
   height: 160pt;
   position: relative;
@@ -181,4 +171,9 @@ ul > li > a {
 
 .preferece-btn:hover {
   color: white;
+}
+
+.group {
+  margin-top: 5% !important;
+  margin-bottom: 15% !important;
 }
