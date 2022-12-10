@@ -63,7 +63,7 @@ showToastRequest = (type, content) => {
     position: "right",
     stopOnFocus: true,
     style: {
-      background: `${type == "error" ? "#BA0E25" : "#3f4739"}`,
+      background: `${type == "error" ? "#BA0E25" : "#00D100"}`,
     },
   }).showToast();
 };
@@ -252,5 +252,8 @@ form.addEventListener("submit", (e) => {
   e.preventDefault();
   if (!ValidateEmail(emailInp.value)) {
     showToastRequest("error", "Email is invalid");
+  } else {
+    showToastRequest("success", "Email sent!");
+    emailInp.value = "";
   }
 });

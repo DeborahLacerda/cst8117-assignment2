@@ -4,8 +4,6 @@ $(document).ready(() => {
   const apiKeyNews = "82bdca288945450d9ad20f5253a5f8e3";
   const apiKeyWeather = "d228430a7837ca7c487f6914f626939d";
 
-  let currentSections = localStorage.getItem("preferences");
-
   const listOfSubjects = [
     "business",
     "ottawa",
@@ -175,7 +173,6 @@ $(document).ready(() => {
   savePreferences = () => {
     const itemsChecked = $('input[name="subjects"]:checked');
     itemsStored = [];
-    //localStorage.setItem("preferences", JSON.stringify(itemsChecked));
     $.each(itemsChecked, (index, element) => {
       itemsStored.push(element.value);
     });
@@ -209,7 +206,7 @@ $(document).ready(() => {
       position: "right",
       stopOnFocus: true,
       style: {
-        background: `${type == "error" ? "#BA0E25" : "#3f4739"}`,
+        background: `${type == "error" ? "#BA0E25" : "#00D100"}`,
       },
     }).showToast();
   };
@@ -243,6 +240,9 @@ $(document).ready(() => {
     e.preventDefault();
     if (!ValidateEmail(emailInp.value)) {
       showToastRequest("error", "Email is invalid");
+    } else {
+      showToastRequest("success", "Email sent!");
+      emailInp.value = "";
     }
   });
 });
