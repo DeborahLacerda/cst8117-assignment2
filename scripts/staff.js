@@ -14,10 +14,22 @@ showToastRequest = (type, content) => {
 
 // toggle to dark mode
 
+// toggle to dark mode
+
 const checkbox = document.getElementById("checkbox");
+
 checkbox.addEventListener("change", () => {
-  document.body.classList.toggle("dark-mode");
+  if (document.body.classList.toggle("dark-mode")) {
+    localStorage.setItem("isDarkModeOn", true);
+  } else {
+    localStorage.setItem("isDarkModeOn", false);
+  }
 });
+
+const currentMode = localStorage.getItem("isDarkModeOn");
+if (currentMode == "true") {
+  document.body.classList.toggle("dark-mode");
+}
 
 // validate email
 function ValidateEmail(input) {
